@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="IWP-to-marked-image pilot proposal and commercial terms draft for review.">
+  <title>IWP-to-marked-image pilot · Proposal</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17212b;
+      --muted: #5e6b76;
+      --paper: #f6f8fb;
+      --card: #ffffff;
+      --line: #d9e1e8;
+      --navy: #173b56;
+      --blue: #1769aa;
+      --blue-soft: #e8f2fb;
+      --gold: #a36b00;
+      --gold-soft: #fff5d8;
+      --green: #216a4a;
+      --green-soft: #e9f6ef;
+      --shadow: 0 18px 45px rgba(23, 59, 86, 0.09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--blue); }
+    .shell { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .topbar { border-bottom: 1px solid rgba(217, 225, 232, .8); background: rgba(246, 248, 251, .9); }
+    .topbar-inner { display: flex; justify-content: space-between; gap: 24px; align-items: center; min-height: 64px; }
+    .brand { color: var(--navy); font-weight: 800; letter-spacing: -.02em; text-decoration: none; }
+    nav { display: flex; flex-wrap: wrap; gap: 18px; font-size: .9rem; }
+    nav a { color: var(--muted); text-decoration: none; }
+    nav a:hover { color: var(--navy); }
+    .hero { padding: 72px 0 56px; background: linear-gradient(135deg, #edf5fb 0%, #f6f8fb 60%, #fff7df 100%); border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 14px; color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h1, h2, h3 { color: var(--navy); line-height: 1.15; letter-spacing: -.035em; }
+    h1 { max-width: 780px; margin: 0; font-size: clamp(2.5rem, 6vw, 5.2rem); }
+    h2 { margin: 0 0 18px; font-size: clamp(1.7rem, 3vw, 2.4rem); }
+    h3 { margin: 0 0 8px; font-size: 1.1rem; letter-spacing: -.015em; }
+    .lede { max-width: 760px; margin: 22px 0 0; color: #344553; font-size: 1.18rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .pill { display: inline-flex; align-items: center; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--muted); font-size: .9rem; }
+    .pill strong { color: var(--navy); margin-right: 5px; }
+    .notice { margin-top: 28px; padding: 18px 20px; border-left: 4px solid var(--gold); background: var(--gold-soft); color: #614800; }
+    main { padding: 54px 0 90px; }
+    section { margin: 0 0 56px; scroll-margin-top: 84px; }
+    .section-intro { max-width: 760px; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .card { grid-column: span 4; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: var(--shadow); }
+    .card.wide { grid-column: span 8; }
+    .card.full { grid-column: 1 / -1; }
+    .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+    .metric { font-size: 2.25rem; font-weight: 800; color: var(--navy); line-height: 1; }
+    .metric-label { margin-top: 8px; color: var(--muted); font-size: .9rem; }
+    .money { color: var(--green); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--card); box-shadow: var(--shadow); }
+    table { width: 100%; min-width: 650px; border-collapse: collapse; }
+    th, td { padding: 15px 17px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #f1f5f8; color: var(--navy); font-size: .86rem; text-transform: uppercase; letter-spacing: .06em; }
+    tr:last-child td { border-bottom: 0; font-weight: 800; }
+    ul, ol { padding-left: 1.3rem; }
+    li + li { margin-top: 8px; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { position: relative; padding-left: 30px; }
+    .checklist li::before { content: "✓"; position: absolute; left: 0; top: .02em; display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; background: var(--green-soft); color: var(--green); font-weight: 800; }
+    .muted { color: var(--muted); }
+    .callout { padding: 22px; border-radius: 14px; background: var(--blue-soft); color: #21445f; }
+    .callout strong { color: var(--navy); }
+    .two-col { columns: 2 320px; column-gap: 38px; }
+    .two-col li { break-inside: avoid; }
+    footer { padding: 28px 0 50px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    @media (max-width: 780px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 14px 0; }
+      .card, .card.wide { grid-column: 1 / -1; }
+      .hero { padding-top: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top">IWP-to-marked-image pilot · Proposal</a>
+      <nav aria-label="Page sections">
+        <a href="#scope">Scope</a>
+        <a href="#commercials">Commercials</a>
+        <a href="#acceptance">Acceptance</a>
+        <a href="#decisions">Open decisions</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="top" class="hero">
+    <div class="shell">
+      <p class="eyebrow">Prepared for a client under NDA</p>
+      <h1>A controlled pilot for the IWP-to-marked-image workflow.</h1>
+      <p class="lede">The proposed engagement evaluates whether an approved source <code>.iwp</code> program and corresponding marked PDF or image can be detected, registered, reviewed, and safely transformed into a relabeled IWP without changing measurement logic or corrupting the source format.</p>
+      <div class="meta">
+        <span class="pill"><strong>Status</strong> Draft for review</span>
+        <span class="pill"><strong>Prepared by</strong> Ethan Davidson</span>
+        <span class="pill"><strong>Commercial terms</strong> in the private pack</span>
+      </div>
+      <div class="notice"><strong>Important:</strong> This page is a commercial and technical discussion draft, not a signed contract, legal advice, production authorization, or guarantee of production success. Final terms require the client’s legal, procurement, security, and technical approval.</div>
+    </div>
+  </div>
+
+  <main class="shell">
+    <section id="overview">
+      <p class="eyebrow">01 · The proposal</p>
+      <h2>A bounded pilot with a concrete answer at the end</h2>
+      <p class="section-intro">The pilot is designed to reduce uncertainty before production integration. It starts with discovery and a controlled real-pair evaluation, keeps the production systems read-only, and produces the evidence needed to decide whether a larger implementation is justified.</p>
+      <div class="grid" style="margin-top: 24px">
+        <article class="card"><div class="metric">~74</div><div class="metric-label">nominal planning hours</div><p>Discovery, safe IWP processing, rendering, registration, vision evaluation, audit output, and handoff. Milestones are billed as fixed amounts, not by hours worked.</p></article>
+      </div>
+    </section>
+
+    <section id="scope">
+      <p class="eyebrow">02 · Scope and deliverables</p>
+      <h2>What the pilot delivers</h2>
+      <div class="grid">
+        <article class="card"><h3>Discovery and boundary</h3><p>Machine/software interface inventory, source-of-truth map, security and network constraints, and a proposed API/data model.</p></article>
+        <article class="card"><h3>IWP processing</h3><p>UTF-16LE/CRLF-safe parsing and writing for the agreed feature subset, canonical millimetre geometry, deterministic SVG/PNG review artifacts, and before/after audit data.</p></article>
+        <article class="card"><h3>Vision and matching</h3><p>Structured marker observations, provider integration, affine or projective registration, one-to-one geometric matching, residuals, ambiguity checks, and confidence gates.</p></article>
+        <article class="card"><h3>Controlled evaluation</h3><p>One approved real source-IWP/marked-image pair, a proposed mapping report, a reviewable relabeled IWP, and an audit manifest.</p></article>
+        <article class="card"><h3>Handoff</h3><p>API contract draft, implementation notes, runbook, limitations, follow-up backlog, and a production-readiness recommendation.</p></article>
+        <article class="card"><h3>Provider boundary</h3><p>Google Gemini is for the synthetic proof only. Real client data uses only client-authorized Claude through GovCloud, subject to client approval.</p></article>
+      </div>
+    </section>
+
+    <section id="commercials">
+      <p class="eyebrow">03 · Commercial terms</p>
+      <h2>Fixed-price milestone pilot with a hard ceiling</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Item</th><th>Basis</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Pilot services</td><td>Five accepted milestones</td><td>Fixed fee, see private pack</td></tr>
+            <tr><td>Contingency authorization</td><td>Fixed hourly rate, written approval required</td><td>See private pack</td></tr>
+            <tr><td><strong>Maximum authorized total</strong></td><td>Pilot fee plus contingency</td><td><strong>Ceiling, see private pack</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid" style="margin-top: 18px">
+        <article class="card wide"><h3>Invoicing</h3><p>Invoice each milestone on acceptance, with the accepted deliverable itemized, and hold the final invoice until the audit manifest and handoff review are accepted. Net-15 or Net-30, expenses, taxes, and payment method remain to be written into the final agreement.</p></article>
+        <article class="card"><h3>Change control</h3><p>Work stops at the ceiling unless a written change order identifies the new work, price, schedule, acceptance criteria, and approvals.</p></article>
+      </div>
+    </section>
+
+    <section id="milestones">
+      <p class="eyebrow">04 · Milestones</p>
+      <h2>Reviewable progress, not a black-box handoff</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Milestone</th><th>Payment</th><th>Deliverable that triggers payment</th></tr></thead>
+          <tbody>
+            <tr><td>Discovery and integration boundary</td><td>Milestone 1</td><td>Boundary brief, information gaps, approved feature/scope matrix</td></tr>
+            <tr><td>IWP parser and safe writer</td><td>Milestone 2</td><td>Encoding/line-ending preservation tests and safe replacement outputs</td></tr>
+            <tr><td>Renderer and registration</td><td>Milestone 3</td><td>SVG/PNG review artifacts, transform method, residual/tolerance report</td></tr>
+            <tr><td>Vision detection and evaluation</td><td>Milestone 4</td><td>Structured observations, provider record, metrics, and ambiguity results</td></tr>
+            <tr><td>Real-pair evaluation, audit, and handoff</td><td>Milestone 5</td><td>Read-only result, audit manifest, proposed output, runbook, handoff review</td></tr>
+            <tr><td><strong>Pilot total</strong></td><td><strong>See private pack</strong></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="acceptance">
+      <p class="eyebrow">05 · Acceptance and boundaries</p>
+      <h2>How both sides know the pilot is complete</h2>
+      <div class="grid">
+        <article class="card wide">
+          <h3>Acceptance criteria</h3>
+          <ol class="checklist">
+            <li>The agreed sample IWP is read and written without changing encoding, line endings, or non-target content.</li>
+            <li>The agreed feature subset is rendered into a reviewable canonical image.</li>
+            <li>The approved vision provider returns structured marker observations for the approved image.</li>
+            <li>The matcher reports one-to-one assignments, transform residuals, and confidence gates.</li>
+            <li>The rewritten IWP, audit manifest, and human-review report are produced.</li>
+            <li>The client receives a recommendation for the next production-integration phase.</li>
+          </ol>
+        </article>
+        <article class="card"><h3>Approval window</h3><p>The client names one technical approver. The approver has five business days after delivery to accept the artifact or identify specific material defects against the agreed criteria.</p><p class="muted">New features, systems, geometries, environments, or production deployment require a change order.</p></article>
+      </div>
+    </section>
+
+    <section id="ip-data">
+      <p class="eyebrow">06 · IP and data</p>
+      <h2>Specific deliverables, protected data, reusable background technology</h2>
+      <div class="grid">
+        <article class="card"><h3>Client-owned work</h3><p>The client owns the machine-specific and Discus-specific deliverables created and paid for under the SOW, including agreed integration code, schemas, configuration, mappings, runbook, and final evaluation artifacts.</p></article>
+        <article class="card"><h3>Background technology</h3><p>Ethan retains pre-existing and reusable generic parsers, geometry/registration algorithms, AI adapters, test harnesses, know-how, and improvements that do not disclose client Confidential Information.</p></article>
+        <article class="card"><h3>Client data</h3><p>IWP files, marked drawings, machine configurations, Discus data, customer information, inspection results, and manufacturing records remain client-controlled Confidential Information.</p></article>
+        <article class="card full"><div class="callout"><strong>AI-provider rule:</strong> Synthetic fixtures may use Google Gemini. Real client data must not use the free Gemini path. Real-data inference may use only client-authorized Claude through GovCloud after the client approves the endpoint, model, region, retention behavior, logging, and contractual controls.</div></article>
+      </div>
+    </section>
+
+    <section id="assumptions">
+      <p class="eyebrow">07 · Assumptions and exclusions</p>
+      <h2>What this price depends on</h2>
+      <div class="grid">
+        <article class="card wide"><h3>Assumptions</h3><ul><li>The client provides one approved, authorized source-IWP/marked-image pair.</li><li>The client provides the machine, Discus, and output documentation needed for the read-only evaluation.</li><li>The client identifies the owners of quote, production, inventory, inspection, and quality records.</li><li>Human review remains mandatory before a rewritten IWP is used operationally.</li><li>The pilot remains read-only against production systems.</li></ul></article>
+        <article class="card"><h3>Excluded unless added</h3><ul><li>Production deployment or 24/7 support</li><li>Machine-control commands or automated quality disposition</li><li>Full ERP/MES/QMS implementation</li><li>Customer-facing portal development</li><li>Compliance certification work</li><li>Guaranteed throughput or accuracy</li></ul></article>
+      </div>
+    </section>
+
+    <section id="decisions">
+      <p class="eyebrow">08 · Open decisions</p>
+      <h2>Items to settle before signature</h2>
+      <div class="card full">
+        <ul class="two-col">
+          <li>Contracting entity, billing contact, procurement process, and payment terms</li>
+          <li>Technical owner and acceptance approver</li>
+          <li>Machine model/software version and Discus version</li>
+          <li>One authorized real file pair for evaluation</li>
+          <li>Approved Claude/GovCloud endpoint, model, and data-retention controls</li>
+          <li>Network boundary and access method</li>
+          <li>Retention, audit, export-control, and customer-data rules</li>
+          <li>Confirmation of the fixed milestone payment schedule and acceptance approver</li>
+          <li>Quote validity period, currency, and expenses</li>
+          <li>Final NDA, SOW, IP, confidentiality, and data-handling language</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="callout"><strong>Proposed next step:</strong> confirm the contracting and technical contacts, review the milestone schedule, fee, and acceptance criteria, execute the required NDA and SOW, and schedule the discovery session. No proprietary production files or credentials should be shared until the client approves the data and access boundary.</div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">IWP-to-marked-image pilot · Draft for review · Prepared by Ethan Davidson · September 2026</div>
+  </footer>
+</body>
+</html>
