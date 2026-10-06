@@ -5,13 +5,33 @@ The public, redacted half of **First Contract**, an entry in the [Zo Build Chall
 First Contract is the account of using Zo to turn one informal conversation into a real contracting engagement: researching the client and the market, working out what it actually takes to bill as an independent contractor, reading the client's supplier terms, and drafting the statement of work, the milestone schedule, the acceptance criteria, the commercial terms, and the IP and data boundaries. The engagement was priced as a fixed-fee pilot with milestone payments, and the draft terms are not yet signed.
 The client is deliberately unnamed. This repository is a public surface for the challenge, and the client's identity adds nothing to the entry. Only publicly published, non-confidential material from that engagement appears here; nothing proprietary is reproduced.
 
-The review page is a single HTML file in this repository (`review/index.html`). It is published with GitHub Pages at <https://ethanthatonekid.github.io/zocomputer-first-contract/>: the site root and `/review/` serve the same page, and `.github/workflows/pages.yml` republishes it on every push to `main`.
+The review page is a single HTML file in this repository (`review/index.html`), plus the brand marks it uses. It is published with GitHub Pages at <https://ethanthatonekid.github.io/zocomputer-first-contract/>: the site root and `/review/` serve the same page, and `.github/workflows/pages.yml` republishes it on every push to `main`.
 
 ## What is in here
 
 | Path | What it is |
 | --- | --- |
 | `review/index.html` | The client-facing review page, redacted: the scope, acceptance criteria, assumptions, and open decisions. |
+| `review/assets/zo-pegasus.svg` | The Zo pegasus mark, downloaded from <https://www.zo.computer/brand>. Used as the page favicon and in the footer credit. |
+| `review/assets/zo-wordmark.svg` | The Zo wordmark, from the same source. Used in the footer credit. |
+
+## Brand
+
+The page is built on the Zo brand system rather than its own visual language.
+
+- **Color.** The page tokens are the published light values from <https://www.zo.computer/design/tokens>, converted from OKLCH to sRGB: background, card, muted surface, foreground, muted foreground, primary, accent, accent foreground, border, success, and warning. The brand radius scale (0.625rem, times 0.5, 0.75, 1, 1.5, 2, and 4) replaces the page's earlier ad-hoc corner radii.
+- **Type.** EB Garamond, the brand serif for the wordmark and section headings, carries the page title and section headings. MonoLisa Text, the brand sans, is commercially licensed and is not redistributed here, so body copy falls back to the system sans stack.
+- **Marks.** The pegasus and wordmark SVGs are vendored from <https://www.zo.computer/brand> and are used unmodified: the pegasus as the favicon, and both in the footer credit that links to <https://www.zo.computer>.
+| `review/assets/` | The Zo brand marks the page uses, `zo-pegasus.svg` and `zo-wordmark.svg`, taken from the direct URLs on <https://www.zo.computer/brand>. |
+
+## Brand
+
+The page carries Zo's published brand system:
+
+- **Marks.** The pegasus and the wordmark, vendored into `review/assets/` from the direct SVG URLs on <https://www.zo.computer/brand>. The pegasus is also the favicon.
+- **Type.** EB Garamond, the brand serif, for the page title and section headings, loaded from Google Fonts. MonoLisa Text, the brand sans, is a licensed font, so body copy falls back to the system UI stack.
+- **Color.** The semantic light tokens from <https://www.zo.computer/design/tokens>, converted from OKLCH to sRGB, and the brand radius scale (`--radius` 0.625rem, x1.5 on cards and tables, x4 on pills).
+- **Attribution.** The footer links to <https://www.zo.computer>.
 
 ## Redaction
 

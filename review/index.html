@@ -5,77 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="IWP-to-marked-image pilot proposal and commercial terms draft for review.">
   <title>IWP-to-marked-image pilot · Proposal</title>
+  <meta name="theme-color" content="#ECEDEF">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="IWP-to-marked-image pilot · Proposal">
+  <meta property="og:description" content="IWP-to-marked-image pilot proposal and commercial terms draft for review.">
+  <link rel="icon" type="image/svg+xml" href="assets/zo-pegasus.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap">
   <style>
     :root {
       color-scheme: light;
-      --ink: #17212b;
-      --muted: #5e6b76;
-      --paper: #f6f8fb;
-      --card: #ffffff;
-      --line: #d9e1e8;
-      --navy: #173b56;
-      --blue: #1769aa;
-      --blue-soft: #e8f2fb;
-      --gold: #a36b00;
-      --gold-soft: #fff5d8;
-      --green: #216a4a;
-      --green-soft: #e9f6ef;
-      --shadow: 0 18px 45px rgba(23, 59, 86, 0.09);
+      /* Zo brand palette, light values, from https://www.zo.computer/design/tokens.
+         OKLCH converted to sRGB. Brand marks, fonts, and direct SVG URLs: /brand. */
+      --background: #ECEDEF;        /* --background        oklch(0.9459 0.0029 264.5417) */
+      --card: #FBFCFC;              /* --card              oklch(0.9903 0.0011 197.1409) */
+      --surface-muted: #E6E8EA;     /* --muted             oklch(0.93 0.0035 247.8605) */
+      --foreground: #1B1D1F;        /* --foreground        oklch(0.2295 0.0049 248.0421) */
+      --muted-foreground: #5C636B;  /* --muted-foreground  oklch(0.4964 0.0155 251.6869) */
+      --primary: #2775CE;           /* --primary           oklch(0.563 0.1561 254.537) */
+      --accent: #C2D6F0;            /* --accent            oklch(0.87 0.042 253.7151) */
+      --accent-foreground: #143458; /* --accent-foreground oklch(0.3213 0.0746 253.397) */
+      --border: #C6C9CD;            /* --border            oklch(0.8347 0.0065 255.4813) */
+      --success: #009966;           /* --success           oklch(0.596 0.145 163.225) */
+      --warning: #E17100;           /* --warning           oklch(0.666 0.179 58.318) */
+      --success-soft: #E3F5ED;
+      --warning-soft: #FCEEDF;
+      /* Brand radius scale: --radius x 0.5 / 0.75 / 1 / 1.5 / 2 / 4. */
+      --radius: 0.625rem;
+      --radius-sm: calc(var(--radius) * 0.5);
+      --radius-md: calc(var(--radius) * 0.75);
+      --radius-lg: var(--radius);
+      --radius-xl: calc(var(--radius) * 1.5);
+      --radius-2xl: calc(var(--radius) * 2);
+      --radius-pill: calc(var(--radius) * 4);
+      /* EB Garamond is the brand serif for section headings and the Zo wordmark.
+         MonoLisa Text, the brand sans, is licensed, so body copy uses the system stack. */
+      --font-serif: "EB Garamond", ui-serif, Georgia, "Times New Roman", serif;
+      --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --shadow: 0 1px 2px rgba(27, 29, 31, .04), 0 12px 32px rgba(27, 29, 31, .06);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      font: 16px/1.6 var(--font-sans);
     }
-    a { color: var(--blue); }
+    a { color: var(--primary); }
+    code { font-family: var(--font-mono); font-size: .95em; }
     .shell { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-    .topbar { border-bottom: 1px solid rgba(217, 225, 232, .8); background: rgba(246, 248, 251, .9); }
+    .topbar { border-bottom: 1px solid rgba(198, 201, 205, .8); background: rgba(236, 237, 239, .88); backdrop-filter: blur(8px); }
     .topbar-inner { display: flex; justify-content: space-between; gap: 24px; align-items: center; min-height: 64px; }
-    .brand { color: var(--navy); font-weight: 800; letter-spacing: -.02em; text-decoration: none; }
+    .brand { color: var(--foreground); font-weight: 700; letter-spacing: -.01em; text-decoration: none; }
     nav { display: flex; flex-wrap: wrap; gap: 18px; font-size: .9rem; }
-    nav a { color: var(--muted); text-decoration: none; }
-    nav a:hover { color: var(--navy); }
-    .hero { padding: 72px 0 56px; background: linear-gradient(135deg, #edf5fb 0%, #f6f8fb 60%, #fff7df 100%); border-bottom: 1px solid var(--line); }
-    .eyebrow { margin: 0 0 14px; color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-    h1, h2, h3 { color: var(--navy); line-height: 1.15; letter-spacing: -.035em; }
-    h1 { max-width: 780px; margin: 0; font-size: clamp(2.5rem, 6vw, 5.2rem); }
-    h2 { margin: 0 0 18px; font-size: clamp(1.7rem, 3vw, 2.4rem); }
+    nav a { color: var(--muted-foreground); text-decoration: none; }
+    nav a:hover { color: var(--primary); }
+    .hero { padding: 72px 0 56px; background: linear-gradient(180deg, #F2F7FC 0%, var(--background) 100%); border-bottom: 1px solid var(--border); }
+    .eyebrow { margin: 0 0 14px; color: var(--primary); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h1, h2, h3 { color: var(--foreground); line-height: 1.15; letter-spacing: -.035em; }
+    h1, h2 { font-family: var(--font-serif); font-weight: 500; letter-spacing: -.005em; }
+    h1 { max-width: 800px; margin: 0; font-size: clamp(2.7rem, 5.8vw, 4.9rem); line-height: 1.08; }
+    h2 { margin: 0 0 18px; font-size: clamp(1.85rem, 3.1vw, 2.6rem); }
     h3 { margin: 0 0 8px; font-size: 1.1rem; letter-spacing: -.015em; }
-    .lede { max-width: 760px; margin: 22px 0 0; color: #344553; font-size: 1.18rem; }
+    .lede { max-width: 760px; margin: 22px 0 0; color: var(--muted-foreground); font-size: 1.18rem; }
     .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-    .pill { display: inline-flex; align-items: center; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--muted); font-size: .9rem; }
-    .pill strong { color: var(--navy); margin-right: 5px; }
-    .notice { margin-top: 28px; padding: 18px 20px; border-left: 4px solid var(--gold); background: var(--gold-soft); color: #614800; }
+    .pill { display: inline-flex; align-items: center; padding: 7px 12px; border: 1px solid var(--border); border-radius: var(--radius-pill); background: rgba(251, 252, 252, .78); color: var(--muted-foreground); font-size: .9rem; }
+    .pill strong { color: var(--foreground); margin-right: 5px; }
+    .notice { margin-top: 28px; padding: 18px 20px; border-left: 4px solid var(--warning); border-radius: var(--radius-md); background: var(--warning-soft); color: var(--foreground); }
     main { padding: 54px 0 90px; }
     section { margin: 0 0 56px; scroll-margin-top: 84px; }
-    .section-intro { max-width: 760px; color: var(--muted); }
+    .section-intro { max-width: 760px; color: var(--muted-foreground); }
     .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
-    .card { grid-column: span 4; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: var(--shadow); }
+    .card { grid-column: span 4; padding: 24px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--card); box-shadow: var(--shadow); }
     .card.wide { grid-column: span 8; }
     .card.full { grid-column: 1 / -1; }
     .card p:last-child, .card ul:last-child { margin-bottom: 0; }
-    .metric { font-size: 2.25rem; font-weight: 800; color: var(--navy); line-height: 1; }
-    .metric-label { margin-top: 8px; color: var(--muted); font-size: .9rem; }
-    .money { color: var(--green); }
-    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--card); box-shadow: var(--shadow); }
+    .metric { font-family: var(--font-serif); font-size: 2.6rem; font-weight: 500; color: var(--foreground); line-height: 1; }
+    .metric-label { margin-top: 8px; color: var(--muted-foreground); font-size: .9rem; }
+    .money { color: var(--success); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--card); box-shadow: var(--shadow); }
     table { width: 100%; min-width: 650px; border-collapse: collapse; }
-    th, td { padding: 15px 17px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-    th { background: #f1f5f8; color: var(--navy); font-size: .86rem; text-transform: uppercase; letter-spacing: .06em; }
+    th, td { padding: 15px 17px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    th { background: var(--surface-muted); color: var(--foreground); font-size: .86rem; text-transform: uppercase; letter-spacing: .06em; }
     tr:last-child td { border-bottom: 0; font-weight: 800; }
     ul, ol { padding-left: 1.3rem; }
     li + li { margin-top: 8px; }
     .checklist { list-style: none; padding: 0; }
     .checklist li { position: relative; padding-left: 30px; }
-    .checklist li::before { content: "✓"; position: absolute; left: 0; top: .02em; display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; background: var(--green-soft); color: var(--green); font-weight: 800; }
-    .muted { color: var(--muted); }
-    .callout { padding: 22px; border-radius: 14px; background: var(--blue-soft); color: #21445f; }
-    .callout strong { color: var(--navy); }
+    .checklist li::before { content: "✓"; position: absolute; left: 0; top: .02em; display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; background: var(--success-soft); color: var(--success); font-weight: 800; }
+    .muted { color: var(--muted-foreground); }
+    .callout { padding: 22px; border-radius: var(--radius-xl); background: var(--accent); color: var(--accent-foreground); }
+    .callout strong { color: var(--accent-foreground); }
     .two-col { columns: 2 320px; column-gap: 38px; }
     .two-col li { break-inside: avoid; }
-    footer { padding: 28px 0 50px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    footer { margin-top: 24px; border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: .9rem; }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; padding-top: 28px; padding-bottom: 52px; }
+    .footer-brand { display: inline-flex; align-items: center; gap: 8px; color: var(--muted-foreground); text-decoration: none; }
+    .footer-brand:hover { color: var(--foreground); }
+    .footer-brand img { display: block; }
+    .footer-brand .footer-pegasus { width: 22px; height: 22px; }
+    .footer-brand .footer-wordmark { width: auto; height: 17px; opacity: .85; }
+    .footer-brand:hover .footer-wordmark { opacity: 1; }
     @media (max-width: 780px) {
       .topbar-inner { align-items: flex-start; flex-direction: column; padding: 14px 0; }
       .card, .card.wide { grid-column: 1 / -1; }
@@ -234,7 +267,14 @@
   </main>
 
   <footer>
-    <div class="shell">IWP-to-marked-image pilot · Draft for review · Prepared by Ethan Davidson · September 2026</div>
+    <div class="shell footer-inner">
+      <div>IWP-to-marked-image pilot · Draft for review · Prepared by Ethan Davidson · September 2026</div>
+      <a class="footer-brand" href="https://www.zo.computer" title="Built with Zo Computer">
+        <span>Built with</span>
+        <img class="footer-pegasus" src="assets/zo-pegasus.svg" alt="">
+        <img class="footer-wordmark" src="assets/zo-wordmark.svg" alt="Zo Computer">
+      </a>
+    </div>
   </footer>
 </body>
 </html>
