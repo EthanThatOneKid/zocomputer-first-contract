@@ -21,17 +21,7 @@ The page is built on the Zo brand system rather than its own visual language.
 
 - **Color.** The page tokens are the published light values from <https://www.zo.computer/design/tokens>, converted from OKLCH to sRGB: background, card, muted surface, foreground, muted foreground, primary, accent, accent foreground, border, success, and warning. The brand radius scale (0.625rem, times 0.5, 0.75, 1, 1.5, 2, and 4) replaces the page's earlier ad-hoc corner radii.
 - **Type.** EB Garamond, the brand serif for the wordmark and section headings, carries the page title and section headings. MonoLisa Text, the brand sans, is commercially licensed and is not redistributed here, so body copy falls back to the system sans stack.
-- **Marks.** The pegasus and wordmark SVGs are vendored from <https://www.zo.computer/brand> and are used unmodified: the pegasus as the favicon, and both in the footer credit that links to <https://www.zo.computer>.
-| `review/assets/` | The Zo brand marks the page uses, `zo-pegasus.svg` and `zo-wordmark.svg`, taken from the direct URLs on <https://www.zo.computer/brand>. |
-
-## Brand
-
-The page carries Zo's published brand system:
-
-- **Marks.** The pegasus and the wordmark, vendored into `review/assets/` from the direct SVG URLs on <https://www.zo.computer/brand>. The pegasus is also the favicon.
-- **Type.** EB Garamond, the brand serif, for the page title and section headings, loaded from Google Fonts. MonoLisa Text, the brand sans, is a licensed font, so body copy falls back to the system UI stack.
-- **Color.** The semantic light tokens from <https://www.zo.computer/design/tokens>, converted from OKLCH to sRGB, and the brand radius scale (`--radius` 0.625rem, x1.5 on cards and tables, x4 on pills).
-- **Attribution.** The footer links to <https://www.zo.computer>.
+- **Marks.** The pegasus and wordmark SVGs are vendored from <https://www.zo.computer/brand> and are used unmodified: the pegasus as the page favicon, and both marks in the footer credit that links to <https://www.zo.computer>.
 
 ## Redaction
 
