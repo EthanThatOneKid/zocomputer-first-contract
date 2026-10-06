@@ -23,10 +23,9 @@ jobs:
 
       - name: Assemble the site
         run: |
-          mkdir -p _site
-          cp review/index.html _site/index.html
           mkdir -p _site/review
-          cp review/index.html _site/review/index.html
+          cp -R review/. _site/
+          cp -R review/. _site/review/
 
       - name: Configure Pages
         uses: actions/configure-pages@v6
